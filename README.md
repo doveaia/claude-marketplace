@@ -57,9 +57,23 @@ Une fois le marketplace ajouté, installe le plugin de ton choix :
 /plugin install transcribe@doveaia
 ```
 
+Tu devrais voir :
+
+```
+✓ Installed transcribe. Run /reload-plugins to apply.
+```
+
 La syntaxe générale est `/plugin install <nom-du-plugin>@doveaia`.
 
-### 3. Vérifier l'installation
+### 3. Recharger les plugins
+
+Pour activer le plugin sans redémarrer Claude Code :
+
+```
+/reload-plugins
+```
+
+### 4. Vérifier l'installation
 
 ```
 /plugin list
@@ -77,6 +91,7 @@ Le plugin installé apparaît dans la liste et ses skills/agents/commandes devie
 | `/plugin install <name>@doveaia` | Installe un plugin |
 | `/plugin uninstall <name>` | Désinstalle un plugin |
 | `/plugin list` | Liste les plugins installés |
+| `/reload-plugins` | Recharge les plugins (après install/update) sans redémarrer Claude Code |
 
 ## Slash commands fournis par les plugins
 
