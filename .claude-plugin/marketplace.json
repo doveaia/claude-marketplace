@@ -1,0 +1,13 @@
+{
+  "name": "doveaia",
+  "owner": {
+    "name": "James K. GAGLO"
+  },
+  "plugins": [
+    {
+      "name": "transcribe",
+      "source": "./plugins/transcribe",
+      "description": "Transcribe YouTube videos and local video/audio files with multiple transcription backend support"
+    }
+  ]
+}

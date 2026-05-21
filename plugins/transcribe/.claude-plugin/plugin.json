@@ -1,0 +1,8 @@
+{
+  "name": "transcribe",
+  "description": "Transcribe YouTube videos and local video/audio files with multiple transcription backend support (optimized for Apple Silicon)",
+  "version": "3.0.0",
+  "author": {
+    "name": "James K. GAGLO"
+  }
+}
