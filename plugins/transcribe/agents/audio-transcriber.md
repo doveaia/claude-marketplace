@@ -1,5 +1,7 @@
 ---
+name: audio-transcriber
 description: Transcribes audio files using multiple backend options with timestamp support
+model: sonnet
 ---
 
 # Audio Transcriber Agent
