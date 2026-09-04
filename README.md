@@ -7,6 +7,7 @@ Marketplace de plugins [Claude Code](https://docs.claude.com/en/docs/claude-code
 | Plugin | Version | Description |
 |--------|---------|-------------|
 | [`transcribe`](./plugins/transcribe) | 3.0.0 | Transcrit des vidéos YouTube et des fichiers vidéo/audio locaux avec support de plusieurs backends de transcription (whisper.cpp, OpenAI Whisper, Whisper API, macOS Speech). |
+| [`mattpocock-skills-addons`](./plugins/mattpocock-skills-addons) | 0.4.0 | Surcouches aux skills de Matt Pocock via leur config par dépôt : board GitHub Projects pour `triage`, synchronisé avec les labels. Requiert le plugin `mattpocock-skills`. |
 
 ## Installation
 

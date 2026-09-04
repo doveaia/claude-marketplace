@@ -1,0 +1,22 @@
+{
+  "name": "mattpocock-skills-addons",
+  "version": "0.4.0",
+  "description": "Extensions to Matt Pocock's engineering skills that work through upstream's own per-repo config instead of wrapping or forking. Ships setup-triage-board, which gives triage a GitHub Projects board, and sync-triage-board, which moves cards when triage labels change. Requires the mattpocock-skills plugin.",
+  "author": {
+    "name": "James Kokou GAGLO",
+    "url": "https://github.com/doveaia"
+  },
+  "repository": "https://github.com/doveaia/claude-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "skills",
+    "triage",
+    "github-projects",
+    "addons"
+  ],
+  "skills": [
+    "./skills/setup-triage-board",
+    "./skills/sync-triage-board"
+  ]
+}
