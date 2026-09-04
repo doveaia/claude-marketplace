@@ -1,156 +1,156 @@
 # Doveaia — Claude Code Marketplace
 
-Marketplace de plugins [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) maintenu par [James K. GAGLO](https://github.com/doveaia).
+[Claude Code](https://docs.claude.com/en/docs/claude-code/overview) plugin marketplace maintained by [James K. GAGLO](https://github.com/doveaia).
 
-## Plugins disponibles
+## Available plugins
 
 | Plugin | Version | Description |
 |--------|---------|-------------|
-| [`transcribe`](./plugins/transcribe) | 3.0.0 | Transcrit des vidéos YouTube et des fichiers vidéo/audio locaux avec support de plusieurs backends de transcription (whisper.cpp, OpenAI Whisper, Whisper API, macOS Speech). |
-| [`mattpocock-skills-addons`](./plugins/mattpocock-skills-addons) | 0.4.0 | Surcouches aux skills de Matt Pocock via leur config par dépôt : board GitHub Projects pour `triage`, synchronisé avec les labels. Requiert le plugin `mattpocock-skills`. |
+| [`transcribe`](./plugins/transcribe) | 3.0.0 | Transcribes YouTube videos and local video/audio files with support for several transcription backends (whisper.cpp, OpenAI Whisper, Whisper API, macOS Speech). |
+| [`mattpocock-skills-addons`](./plugins/mattpocock-skills-addons) | 0.4.0 | Layers on top of Matt Pocock's skills through their per-repo config: a GitHub Projects board for `triage`, kept in sync with labels. Requires the `mattpocock-skills` plugin. |
 
 ## Installation
 
-### 1. Ajouter le marketplace
+### 1. Add the marketplace
 
-Trois façons d'ajouter ce marketplace, au choix :
+Three ways to add this marketplace, pick one:
 
-#### a. Depuis Claude Code (slash command)
+#### a. From Claude Code (slash command)
 
 ```
 /plugin marketplace add doveaia/claude-marketplace
 ```
 
-#### b. Depuis le terminal (CLI Claude Code)
+#### b. From the terminal (Claude Code CLI)
 
 ```bash
 claude plugin marketplace add doveaia/claude-marketplace
 ```
 
-Tu peux aussi pointer vers le dépôt Git complet :
+You can also point to the full Git repository:
 
 ```bash
 claude plugin marketplace add git@github.com:doveaia/claude-marketplace.git
-# ou en HTTPS
+# or over HTTPS
 claude plugin marketplace add https://github.com/doveaia/claude-marketplace.git
 ```
 
-#### c. Via `git clone` (chemin local)
+#### c. Via `git clone` (local path)
 
-Utile pour développer/modifier les plugins localement :
+Useful for developing or modifying the plugins locally:
 
 ```bash
 git clone git@github.com:doveaia/claude-marketplace.git ~/claude-marketplace
 claude plugin marketplace add ~/claude-marketplace
 ```
 
-Ou depuis Claude Code une fois le repo cloné :
+Or from Claude Code once the repo is cloned:
 
 ```
 /plugin marketplace add ~/claude-marketplace
 ```
 
-### 2. Installer un plugin
+### 2. Install a plugin
 
-Une fois le marketplace ajouté, installe le plugin de ton choix :
+Once the marketplace is added, install the plugin of your choice:
 
 ```
 /plugin install transcribe@doveaia
 ```
 
-Tu devrais voir :
+You should see:
 
 ```
 ✓ Installed transcribe. Run /reload-plugins to apply.
 ```
 
-La syntaxe générale est `/plugin install <nom-du-plugin>@doveaia`.
+The general syntax is `/plugin install <plugin-name>@doveaia`.
 
-### 3. Recharger les plugins
+### 3. Reload the plugins
 
-Pour activer le plugin sans redémarrer Claude Code :
+To activate the plugin without restarting Claude Code:
 
 ```
 /reload-plugins
 ```
 
-### 4. Vérifier l'installation
+### 4. Verify the installation
 
 ```
 /plugin list
 ```
 
-Le plugin installé apparaît dans la liste et ses skills/agents/commandes deviennent disponibles dans Claude Code.
+The installed plugin appears in the list and its skills/agents/commands become available in Claude Code.
 
-## Commandes utiles
+## Useful commands
 
-| Commande | Effet |
-|----------|-------|
-| `/plugin marketplace list` | Liste les marketplaces ajoutés |
-| `/plugin marketplace update doveaia` | Met à jour la liste des plugins du marketplace |
-| `/plugin marketplace remove doveaia` | Retire le marketplace |
-| `/plugin install <name>@doveaia` | Installe un plugin |
-| `/plugin uninstall <name>` | Désinstalle un plugin |
-| `/plugin list` | Liste les plugins installés |
-| `/reload-plugins` | Recharge les plugins (après install/update) sans redémarrer Claude Code |
+| Command | Effect |
+|---------|--------|
+| `/plugin marketplace list` | Lists the added marketplaces |
+| `/plugin marketplace update doveaia` | Refreshes the marketplace's plugin list |
+| `/plugin marketplace remove doveaia` | Removes the marketplace |
+| `/plugin install <name>@doveaia` | Installs a plugin |
+| `/plugin uninstall <name>` | Uninstalls a plugin |
+| `/plugin list` | Lists the installed plugins |
+| `/reload-plugins` | Reloads the plugins (after install/update) without restarting Claude Code |
 
-## Slash commands fournis par les plugins
+## Slash commands provided by the plugins
 
-Une fois installés, les plugins exposent des slash commands utilisables directement dans Claude Code.
+Once installed, the plugins expose slash commands usable directly in Claude Code.
 
-### Plugin `transcribe`
+### `transcribe` plugin
 
-| Commande | Description |
-|----------|-------------|
-| `/transcribe <url-youtube>` | Transcrit une vidéo YouTube vers un fichier markdown avec timestamps et métadonnées. |
-| `/transcribe <chemin-fichier>` | Transcrit un fichier vidéo ou audio local (MP4, MKV, MOV, MP3, M4A, WAV, FLAC, etc.). |
+| Command | Description |
+|---------|-------------|
+| `/transcribe <youtube-url>` | Transcribes a YouTube video to a markdown file with timestamps and metadata. |
+| `/transcribe <file-path>` | Transcribes a local video or audio file (MP4, MKV, MOV, MP3, M4A, WAV, FLAC, etc.). |
 
-Comportement automatique inclus :
-- Détection de la langue d'origine (les vidéos françaises restent en français).
-- Pour une vidéo non-anglophone : génère deux fichiers (`<nom>-<lang>.md` + `<nom>-en.md` traduit).
-- Sélection automatique du backend de transcription disponible (whisper.cpp → OpenAI Whisper → Whisper API → macOS Speech).
-- Nettoyage des fichiers temporaires.
+Automatic behaviour included:
+- Source language detection (French videos stay in French).
+- For a non-English video: generates two files (`<name>-<lang>.md` + a translated `<name>-en.md`).
+- Automatic selection of the available transcription backend (whisper.cpp → OpenAI Whisper → Whisper API → macOS Speech).
+- Cleanup of temporary files.
 
-> Les skills internes (`transcription-backends`, `youtube-metadata`) et les sous-agents (`audio-transcriber`, `media-processor`) ne s'invoquent pas directement : ils sont orchestrés par `/transcribe`.
+> The internal skills (`transcription-backends`, `youtube-metadata`) and sub-agents (`audio-transcriber`, `media-processor`) are not invoked directly: they are orchestrated by `/transcribe`.
 
-## Dépendances par plugin
+## Dependencies per plugin
 
-Chaque plugin peut avoir ses propres dépendances externes (binaires, services). Consulte le README du plugin pour la liste détaillée :
+Each plugin may have its own external dependencies (binaries, services). See the plugin's README for the detailed list:
 
-- **transcribe** → `yt-dlp` (YouTube), `ffmpeg` (vidéos locales) et au moins un backend de transcription. Voir [plugins/transcribe/README.md](./plugins/transcribe/README.md).
+- **transcribe** → `yt-dlp` (YouTube), `ffmpeg` (local videos) and at least one transcription backend. See [plugins/transcribe/README.md](./plugins/transcribe/README.md).
 
-## Structure du marketplace
+## Marketplace structure
 
 ```
 .
 ├── .claude-plugin/
-│   └── marketplace.json        # Manifeste du marketplace
+│   └── marketplace.json        # Marketplace manifest
 └── plugins/
     └── transcribe/
         ├── .claude-plugin/
-        │   └── plugin.json     # Manifeste du plugin
-        ├── agents/             # Sous-agents Claude
-        ├── skills/             # Skills invocables
+        │   └── plugin.json     # Plugin manifest
+        ├── agents/             # Claude sub-agents
+        ├── skills/             # Invocable skills
         ├── README.md
         └── CHANGELOG.md
 ```
 
-## Contribuer
+## Contributing
 
-Pour ajouter un nouveau plugin :
+To add a new plugin:
 
-1. Crée un dossier sous `plugins/<nom-du-plugin>/`.
-2. Ajoute un manifeste `plugins/<nom-du-plugin>/.claude-plugin/plugin.json` (champs : `name`, `description`, `version`, `author`).
-3. Référence le plugin dans `.claude-plugin/marketplace.json` :
+1. Create a folder under `plugins/<plugin-name>/`.
+2. Add a manifest `plugins/<plugin-name>/.claude-plugin/plugin.json` (fields: `name`, `description`, `version`, `author`).
+3. Reference the plugin in `.claude-plugin/marketplace.json`:
    ```json
    {
-     "name": "<nom-du-plugin>",
-     "source": "./plugins/<nom-du-plugin>",
+     "name": "<plugin-name>",
+     "source": "./plugins/<plugin-name>",
      "description": "..."
    }
    ```
-4. Ouvre une Pull Request.
+4. Open a Pull Request.
 
-## Licence
+## License
 
-Voir chaque plugin pour sa licence propre.
+See each plugin for its own license.
