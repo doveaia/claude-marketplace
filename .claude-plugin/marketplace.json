@@ -8,6 +8,11 @@
       "name": "transcribe",
       "source": "./plugins/transcribe",
       "description": "Transcribe YouTube videos and local video/audio files with multiple transcription backend support"
+    },
+    {
+      "name": "mattpocock-skills-addons",
+      "source": "./plugins/mattpocock-skills-addons",
+      "description": "Extensions to Matt Pocock's engineering skills through their per-repo config: a GitHub Projects board for triage, kept in step with the labels. Requires the mattpocock-skills plugin."
     }
   ]
 }
